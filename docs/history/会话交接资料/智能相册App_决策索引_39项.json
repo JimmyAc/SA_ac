@@ -1,0 +1,225 @@
+{
+  "project": "Android 智能相册 App",
+  "export_date": "2026-10-18",
+  "document_status": "V1.0 high-level PRD pending user approval",
+  "questions_completed": 39,
+  "next_action": "User reviews/approves PRD; then transfer to ChatGPT Work for priority and implementation design",
+  "product": "Android native intelligent gallery as primary product, personal memories and blog generation as extensions",
+  "primary_constraints": [
+    "true/virtual dual views",
+    "no internal physical copy during reorganization",
+    "user-confirmed physical move",
+    "dynamic tag-based virtual albums",
+    "local AI default / optional authorized cloud",
+    "first-run non-blocking incremental tagging with bundled lightweight model",
+    "reduce RAM and storage usage",
+    "do not assign general development priorities until Work"
+  ],
+  "decisions": [
+    {
+      "number": 1,
+      "topic": "现有媒体管理",
+      "decision": "A：索引系统相册，不主动复制原件"
+    },
+    {
+      "number": 2,
+      "topic": "相册分类",
+      "decision": "C：层级相册+多标签；后按问题 33 修订虚拟层为动态词条聚合"
+    },
+    {
+      "number": 3,
+      "topic": "AI 运行方式",
+      "decision": "C：本地+经授权云端混合"
+    },
+    {
+      "number": 4,
+      "topic": "AI 分析时机",
+      "decision": "C：历史后台批量、后续增量；用户可禁用联网"
+    },
+    {
+      "number": 5,
+      "topic": "信息结构",
+      "decision": "C：标准核心元数据+动态词条"
+    },
+    {
+      "number": 6,
+      "topic": "具体对象",
+      "decision": "C：实体档案及关系关联"
+    },
+    {
+      "number": 7,
+      "topic": "生活事件",
+      "decision": "D：自动生成、用户确认编辑、事件父子层级（完整含 C）"
+    },
+    {
+      "number": 8,
+      "topic": "时空理解",
+      "decision": "D：地点/旅行/常居/轨迹与纠错，事实推测分离"
+    },
+    {
+      "number": 9,
+      "topic": "地图与时间轴",
+      "decision": "D：完整交互地图；**明确标记高级后期功能**"
+    },
+    {
+      "number": 10,
+      "topic": "智能检索",
+      "decision": "D：结构化+语义+图搜图+联合检索，**本地优先**"
+    },
+    {
+      "number": 11,
+      "topic": "生活日志",
+      "decision": "D 增强：任意视图选部分素材、预设/自定义提示词生成图文/Blog"
+    },
+    {
+      "number": 12,
+      "topic": "备份",
+      "decision": "**仅 A 实现本地备份与恢复，D 仅作未来架构扩展方向**"
+    },
+    {
+      "number": 13,
+      "topic": "Android 技术",
+      "decision": "A：Kotlin + Jetpack Compose"
+    },
+    {
+      "number": 14,
+      "topic": "本地模型架构",
+      "decision": "D：模块化、专用+通用、按需加载、多推理后端适配"
+    },
+    {
+      "number": 15,
+      "topic": "视频理解",
+      "decision": "**仅 C**：关键帧+音频；已撤回 D 专门架构预留"
+    },
+    {
+      "number": 16,
+      "topic": "AI 反馈",
+      "decision": "**仅 C**：纠错记录与关联改善；已撤回 D 本地训练架构预留"
+    },
+    {
+      "number": 17,
+      "topic": "媒体生命周期",
+      "decision": "双视图；逻辑ID+哈希；具体物理来源操作 B；一次性整理；内部仅移动；智能混合真实目录规划 D"
+    },
+    {
+      "number": 18,
+      "topic": "主导航",
+      "decision": "B：统一相册首页+真实/虚拟切换，搜索/生活记录/我的"
+    },
+    {
+      "number": 19,
+      "topic": "媒体详情",
+      "decision": "C+：全屏进入，照片缩至上1/3，下2/3交互信息面板"
+    },
+    {
+      "number": 20,
+      "topic": "批量管理",
+      "decision": "C：完整批量词条、AI、实体/事件、物理移动及预览重试"
+    },
+    {
+      "number": 21,
+      "topic": "删除",
+      "decision": "C：虚拟移除、物理副本删除、逻辑记录删除相互区分；系统回收站优先"
+    },
+    {
+      "number": 22,
+      "topic": "云端隐私",
+      "decision": "C：全局开关+相册/媒体授权范围，明确禁止优先"
+    },
+    {
+      "number": 23,
+      "topic": "本地隐私锁",
+      "decision": "**不纳入需求**；假设打开 App 的是本人"
+    },
+    {
+      "number": 24,
+      "topic": "媒体类型",
+      "decision": "C：常用图片视频+RAW/Motion Photo/连拍/设备支持的 HDR"
+    },
+    {
+      "number": 25,
+      "topic": "元数据写回",
+      "decision": "C：先改数据库，用户主动写回原件"
+    },
+    {
+      "number": 26,
+      "topic": "内容编辑",
+      "decision": "A：不内置像素/视频编辑器；可调用外部编辑器"
+    },
+    {
+      "number": 27,
+      "topic": "缓存",
+      "decision": "C：分类清理与空间管理；**尽量复用系统缩略图**"
+    },
+    {
+      "number": 28,
+      "topic": "后台资源",
+      "decision": "C：自适应调度；重点强调低内存、低存储占用与流畅度"
+    },
+    {
+      "number": 29,
+      "topic": "云端 AI 接口",
+      "decision": "C：预设多服务商+用户自定义 API/Key/模型"
+    },
+    {
+      "number": 30,
+      "topic": "扫描来源",
+      "decision": "C：多来源+可配置范围，索引与自动 AI 分别开关"
+    },
+    {
+      "number": 31,
+      "topic": "视图浏览",
+      "decision": "C+：按真实目录/词条动态组织；网格+D/M/Y双指缩放+Top地点"
+    },
+    {
+      "number": 32,
+      "topic": "分享导出",
+      "decision": "C：媒体及可选 JSON 信息导出，批量与目录组织"
+    },
+    {
+      "number": 33,
+      "topic": "虚拟相册成员",
+      "decision": "**B**：动态词条聚合，不另建独立静态成员相册"
+    },
+    {
+      "number": 34,
+      "topic": "多词条筛选",
+      "decision": "C+：✓/空白/×；同类 OR、异类 AND、排除；未确认 AI 默认参与、可选仅确认"
+    },
+    {
+      "number": 35,
+      "topic": "词条库",
+      "decision": "C：统一词条库、层级、同义词、用户整理、AI 推荐"
+    },
+    {
+      "number": 36,
+      "topic": "相似照片",
+      "decision": "C：相似分组、推荐、对比、人工选择删除"
+    },
+    {
+      "number": 37,
+      "topic": "用户定位",
+      "decision": "B：个人自用为主，兼顾未来公开发布"
+    },
+    {
+      "number": 38,
+      "topic": "首次启动",
+      "decision": "**增强 C+**：授权并选媒体范围后，立刻以预置小模型自动渐进索引/词条分析，浏览不阻塞"
+    },
+    {
+      "number": 39,
+      "topic": "产品边界",
+      "decision": "**B**：智能相册为主体，个人记忆、生活日志、Blog 为媒体相关延伸"
+    }
+  ],
+  "not_finalized": [
+    "tag hierarchy filter semantics",
+    "duplicate file merge/split rules",
+    "Android permissions and recovery mechanics",
+    "deletion/re-discovery semantics",
+    "bundled models and inference frameworks",
+    "performance targets",
+    "feature priorities and roadmap",
+    "blog presentation and templates"
+  ]
+}
